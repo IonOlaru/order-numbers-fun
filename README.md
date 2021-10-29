@@ -42,6 +42,37 @@ Change class `AppRunner.java` to adjust these values as needed.
     private static final String[] prefixes = new String[] {"AB"};
 ```
 
+
+### Verify data (4 prefixes, 20 records)
+```
+mysql> SELECT * FROM test2.people ORDER BY order_number_prefix, order_number ASC;
++----+------------+-----------+--------------+---------------------+
+| id | first_name | last_name | order_number | order_number_prefix |
++----+------------+-----------+--------------+---------------------+
+|  1 | John       | Doe       |        94962 | AB                  |
+|  2 | John       | Doe       |        94963 | AB                  |
+|  3 | John       | Doe       |        94964 | AB                  |
+|  4 | John       | Doe       |        94965 | AB                  |
+|  5 | John       | Doe       |        94966 | AB                  |
+|  6 | John       | Doe       |        94967 | AB                  |
+|  8 | John       | Doe       |        94968 | AB                  |
+|  9 | John       | Doe       |        94969 | AB                  |
+| 10 | John       | Doe       |        94970 | AB                  |
+| 11 | John       | Doe       |        94971 | AB                  |
+| 13 | John       | Doe       |        10301 | CD                  |
+| 19 | John       | Doe       |        10302 | CD                  |
+| 20 | John       | Doe       |        10303 | CD                  |
+| 14 | John       | Doe       |        84898 | EF                  |
+| 12 | John       | Doe       |        93880 | FG                  |
+| 15 | John       | Doe       |        93881 | FG                  |
+| 16 | John       | Doe       |        93882 | FG                  |
+| 17 | John       | Doe       |        93883 | FG                  |
+| 18 | John       | Doe       |        93884 | FG                  |
+| 21 | John       | Doe       |        93885 | FG                  |
++----+------------+-----------+--------------+---------------------+
+20 rows in set (0.00 sec)
+```
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
