@@ -2,28 +2,26 @@
 
 ### Create `people` table in `test` database
 ```
-create table test.people
+CREATE TABLE test.people
 (
-	id int auto_increment primary key,
-	first_name varchar(50) null,
-    last_name varchar(50) null,
-    order_number bigint null,
-	order_number_prefix varchar(2) null,
-	constraint unq_order_number unique (order_number, order_number_prefix)
+    id int AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NULL,
+    last_name VARCHAR(50) NULL,
+    order_number BIGINT NULL,
+    order_number_prefix VARCHAR(2) NULL,
+    CONSTRAINT unq_order_number UNIQUE (order_number, order_number_prefix)
 );
 
-create definer = root@`%` trigger test.before_insert_autoincrement_order_number
-	before insert
-	on test.people
-	for each row
-	BEGIN
+DELIMITER //
+CREATE TRIGGER test.before_insert_autoincrement_order_number
+BEFORE INSERT ON test.people FOR EACH ROW
+BEGIN
 SELECT MAX(order_number) INTO @max_order_number FROM test.people where order_number_prefix = NEW.order_number_prefix;
 IF @max_order_number is NULL
 	THEN SET NEW.order_number = FLOOR((RAND() * 90000) + 10000);
 	ELSE SET NEW.order_number = @max_order_number + 1;
 END IF;
-END;
-
+END //
 ```
 
 ### Change `application.properties`
