@@ -92,5 +92,6 @@ The following guides illustrate how to use some features concretely:
 These additional references should also help you:
 
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
-* [Resilience4j is a lightweight, easy-to-use fault tolerance library](https://resilience4j.readme.io/docs)
+* [Resilience4j - lightweight, easy-to-use fault tolerance library](https://resilience4j.readme.io/docs)
+* [Resilience4j - Retry](https://resilience4j.readme.io/docs/retry)
 
