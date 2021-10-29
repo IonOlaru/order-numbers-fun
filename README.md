@@ -6,11 +6,10 @@ create table test.people
 (
 	id int auto_increment primary key,
 	first_name varchar(50) null,
-	last_name varchar(50) null,
+    last_name varchar(50) null,
     order_number bigint null,
 	order_number_prefix varchar(2) null,
-	constraint unq_order_number
-		unique (order_number, order_number_prefix)
+	constraint unq_order_number unique (order_number, order_number_prefix)
 );
 
 create definer = root@`%` trigger test.before_insert_autoincrement_order_number
