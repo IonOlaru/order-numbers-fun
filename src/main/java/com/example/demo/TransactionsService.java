@@ -12,14 +12,14 @@ public class TransactionsService {
     private final static Logger logger = LoggerFactory.getLogger(TransactionsService.class);
     private final JdbcTemplate jdbcTemplate;
 
-    int retries = 1000;
+    short retries = 1000;
 
     public TransactionsService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     public void insertNewRecord(String orderNumberPrefix) {
-        byte attempt = 0;
+        short attempt = 0;
         while (++attempt < retries) {
             try {
                 jdbcTemplate.update("INSERT INTO people (first_name, last_name, order_number_prefix) values (?, ?, ?)",
