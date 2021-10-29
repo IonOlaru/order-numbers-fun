@@ -5,8 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class TransactionsService {
 
     private final static Logger logger = LoggerFactory.getLogger(TransactionsService.class);
@@ -18,6 +21,7 @@ public class TransactionsService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void insertNewRecord(String orderNumberPrefix) {
         short attempt = 0;
         while (++attempt < retries) {
