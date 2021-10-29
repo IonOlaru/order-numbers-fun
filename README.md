@@ -4,7 +4,7 @@
 ```
 CREATE TABLE test.people
 (
-    id int AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NULL,
     last_name VARCHAR(50) NULL,
     order_number BIGINT NULL,
